@@ -13,7 +13,7 @@ const ItemListContainer = ({ greeting }) => {
   const { idCategoria } = useParams();
 
   useEffect(() => {
-    const misProductos = idCategoria ? query(collection(db, "productos"), where("idCat", "==", idCategoria)) : collection(db, "productos");
+    const misProductos = idCategoria ? query(collection(db, "productos"), where("idCat", "===", idCategoria)) : collection(db, "productos");
 
     getDocs(misProductos)
       .then(res => {
@@ -24,7 +24,7 @@ const ItemListContainer = ({ greeting }) => {
         setProductos(nuevosProductos);
       })
       .catch(error => console.log(error))
-  }, [])
+  }, [idCategoria])
 
 
   return (

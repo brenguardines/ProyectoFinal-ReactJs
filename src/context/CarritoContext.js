@@ -7,11 +7,13 @@ export const CarritoProvider = ({ children }) => {
     console.log(carrito);
 
     const agregarProducto = (item, cantidad) => {
-        if (!productoEnCarrito(item.id)) {
-            setCarrito(prev => [...prev, { item, cantidad }]);
-        } else {
-            console.log("Producto ya agregado");
-        }
+       if(productoEnCarrito(item.id)){
+        setCarrito(carrito.map((prod) => {
+            return{... prod, cantidad: prod.cantidad + cantidad}
+        }))
+       }else{
+        setCarrito(prev => [...prev, { item, cantidad }]);
+       }
     }
 
     const eliminarProducto = (id) => {
