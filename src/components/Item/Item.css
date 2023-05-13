@@ -1,0 +1,22 @@
+.cardProducto {
+    border: 1px solid #e3e1e1;
+    width: 15rem;
+    height: 20rem;
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imgProducto {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+.nombreProducto{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
