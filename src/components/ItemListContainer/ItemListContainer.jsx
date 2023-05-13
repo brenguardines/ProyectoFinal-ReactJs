@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import ItemList from '../ItemList/ItemList';
 import { useParams } from 'react-router-dom';
 import './ItemListContainer.css'
-import { collection, getDocs, where, query } from 'firebase/firestore';
+import { collection, getDocs, where, query, orderBy } from 'firebase/firestore';
 import { db } from '../../services/firebase/config';
 
 const ItemListContainer = ({ greeting }) => {
@@ -13,7 +13,7 @@ const ItemListContainer = ({ greeting }) => {
   const { idCategoria } = useParams();
 
   useEffect(() => {
-    const misProductos = idCategoria ? query(collection(db, "productos"), where("idCat", "===", idCategoria)) : collection(db, "productos");
+    const misProductos = idCategoria ? query(collection(db, "productos"), where("idCat", "==", idCategoria)) :query(collection(db, "productos"), orderBy("orden","asc"));
 
     getDocs(misProductos)
       .then(res => {
